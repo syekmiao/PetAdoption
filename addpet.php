@@ -1,28 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Pet</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php require "header.php"; ?>
 <body>
     <div class="container">
-        <h1>Add new pet</h1>
-        <form action="addpet.php" method="post">
+        <h1>Add new pet</h1><br/>
+        <h3>Welcome <?php echo $_SESSION['username'];?></h3><br/>
+        <?php
+            require "addControl.php";
+        ?>
+        <form action="addpet.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <input type="text" placeholder="Enter pet name: " name="petname" class="form-control">
+                <label class="form-lable">Pet name: </label>
+                <input type="text" placeholder="Enter name of pet: " name="petname" class="form-control">
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Enter type of pet: " name="password" class="form-control">
+                <label class="form-lable">Type of pet: </label>
+                <select class="form-select" name="type">
+                    <option selected disabled>Select type of pets</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="other">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Pet picture: </label>
+                <input type="file" name="piture" accept=".jpg, .jpeg, .png" class="form-control">
+                <span id="fileHelpInline" class="form-text">
+                    Only Accepting .jpg .jpeg and .png files
+                </span>
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Pet age: </label>
+                <input type="text" placeholder="Enter age of pet: " name="petage" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Pet breed: </label>
+                <input type="text" placeholder="Enter breed of pet: " name="breed" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Vaccination Status: </label>
+                <select name="vaccinate" class="form-select">
+                    <option value="Not Sure">Not sure</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Deworm Status: </label>
+                <select name="deworm" class="form-select">
+                    <option value="Not Sure">Not sure</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Spray Status: </label>
+                <select name="spray" class="form-select">
+                    <option value="Not Sure">Not sure</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Pet body size: </label>
+                <input type="text" placeholder="Enter body size of pet: (large/medium/small/fur length)" name="size" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Pet color: </label>
+                <input type="text" placeholder="Enter pet color:" name="color" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="form-lable">Additional information: gender, like and dislike, potty trained or not, etc...</label>
+                <textarea placeholder="Enter any extra information:" name="information" rows="6" class="form-control"></textarea>
             </div>
             <div class="form-btn">
-                <input type="submit" value="Login" name="Add" class="btn btn-primary">
+                <input type="submit" value="Add" name="add" class="btn btn-primary">
             </div>
-            <br/><span id="linkToLoginPage" class="form-text">
-                Didn't have an account? Click <a href="register.php">HERE</a> to register.
-            </span>
     </form>
     </div>
     
