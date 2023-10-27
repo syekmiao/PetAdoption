@@ -1,4 +1,9 @@
 <?php
+    if(empty($_SESSION['id'])){
+        echo "<div class='alert alert-danger'>Login expired, please login again. Refresh in 1 sec...</div>";
+        header("refresh:1, url=login.php");
+    }
+    else{
     $userId = $_SESSION['id'];
 
     if(isset($_POST["edit"])){
@@ -13,6 +18,7 @@
         $size = $_POST["size"];
         $color = $_POST["color"];
         $information = $_POST["information"];
+        $editDate = date("Y-m-d");
 
         $errors = array();
 
@@ -57,7 +63,7 @@
 
                 $sql1 = "UPDATE pets SET petName = '$petname', petType = '$petType', petPicture = '$newImageName', petAge = '$petage',
                             petBreed = '$breed', vaccination = '$vaccinate', deworm = '$deworm', spray = '$spray', petSize = '$size',
-                            petColor = '$color', petInformation = '$information' WHERE petID = '$petIDs' ";
+                            petColor = '$color', petInformation = '$information', petEditDate = '$editDate' WHERE petID = '$petIDs' ";
                 
                 if (mysqli_query($conn, $sql1)){
                     echo "<div class='alert alert-success'>Updated Succesfully</div>";
@@ -71,5 +77,6 @@
                     
             }
         }
+    }
     }
 ?>

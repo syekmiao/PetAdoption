@@ -1,4 +1,9 @@
 <?php
+    if(empty($_SESSION['id'])){
+        echo "<div class='alert alert-danger'>Login expired, please login again. Refresh in 1 sec...</div>";
+        header("refresh:1, url=login.php");
+    }
+    else{
     $userId = $_SESSION['id'];
 
     if(isset($_POST["add"])){
@@ -68,5 +73,6 @@
                     }
             }
         }
+    }
     }
 ?>

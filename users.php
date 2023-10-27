@@ -26,7 +26,7 @@
                 <td><?php echo $row["petName"]; ?></td>
                 <td><?php echo $row["petType"]; ?></td>
                 <td>
-                    <a href="" class="btn btn-info">View More</a>
+                    <a href="petDetails.php?petid=<?php echo $row['petID'];?>" class="btn btn-info">View More</a>
                     <a href="edit.php?petid=<?php echo $row["petID"]; ?>" class="btn btn-warning">Edit</a>
                     <a href="delete.php?petid=<?php echo $row["petID"]; ?>" class="btn btn-danger">Delete</a>
                 </td>

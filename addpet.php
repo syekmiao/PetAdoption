@@ -2,7 +2,6 @@
 <body>
     <div class="container">
         <h1>Add new pet</h1><br/>
-        <h3>Welcome <?php echo $_SESSION['username'];?></h3><br/>
         <?php
             require "addControl.php";
         ?>
