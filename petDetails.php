@@ -66,6 +66,7 @@
           </div>
 
           <hr />
+          <a href="adoptApplication.php?petid=<?php $_SESSION['petid'] = $petItem['petID'];?>" class="btn btn-info">Adopt</a>
         </div>
       </main>
     </div>
