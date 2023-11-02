@@ -1,9 +1,9 @@
 <?php require "header.php"; ?>
 <body>
-    <div class="container">
+    <div class="-xxl py-5">
         <h1>Add new pet</h1><br/>
         <?php
-            require "addControl.php";
+            require "controller/addControl.php";
         ?>
         <form action="addpet.php" method="post" enctype="multipart/form-data">
             <div class="form-group">

@@ -1,6 +1,6 @@
 <?php require "header.php"; ?>
 <body>
-    <div class="container">
+    <div class="container-xxl py-5">
         <?php
             if(isset($_POST['login'])) {
                 $loginusername = $_POST['username'];
@@ -13,6 +13,7 @@
                     if(password_verify($loginpassword, $login["userPass"])){
                         $_SESSION['username'] = $login["username"];
                         $_SESSION['id'] = $login["userID"];
+                        $_SESSION['role'] = $login["userrole"];
                         header("Location: index.php");
                         echo "<div class='alert alert-success'>Login successfull</div>";
                         die();

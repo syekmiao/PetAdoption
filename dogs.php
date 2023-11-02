@@ -7,10 +7,10 @@
         <?php 
             $i = 1;
             require_once "database.php";
-            $rows = mysqli_query($conn, "SELECT * FROM pets WHERE petStatus = 'not' ORDER BY petCreateDate DESC");
+            $rows = mysqli_query($conn, "SELECT * FROM pets WHERE petType = 'dog' AND petStatus = 'not' ORDER BY petCreateDate DESC");
             $result = mysqli_fetch_array($rows, MYSQLI_ASSOC);
             if($result){
-                foreach($rows as $row) :
+            foreach($rows as $row) :
         ?>
         <!-- Card-->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">

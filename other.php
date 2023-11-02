@@ -7,7 +7,7 @@
         <?php 
             $i = 1;
             require_once "database.php";
-            $rows = mysqli_query($conn, "SELECT * FROM pets WHERE petStatus = 'not' ORDER BY petCreateDate DESC");
+            $rows = mysqli_query($conn, "SELECT * FROM pets WHERE petType = 'other' AND petStatus = 'not' ORDER BY petCreateDate DESC");
             $result = mysqli_fetch_array($rows, MYSQLI_ASSOC);
             if($result){
                 foreach($rows as $row) :
@@ -28,10 +28,9 @@
         </div>
         <?php $i++; ?>
         <?php endforeach; }
-        else{
+        else {
             echo "<h3 style='margin: 20px; color:red;'>No data found</h3>";
-        }
-        ?>
+        } ?>
         </div>
     </div>
     

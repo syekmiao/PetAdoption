@@ -11,7 +11,7 @@
     }
 ?>
 
-  <div class="container">
+  <div class="container-xxl py-5">
     <div class="row gx-5">
       <aside class="col-lg-6">
         <div class="border rounded-4 mb-3 d-flex justify-content-center">
@@ -20,7 +20,7 @@
         </div>
       </aside>
       <main class="col-lg-6">
-        <div class="ps-lg-3">
+        <div class="ps-xl-3">
           <h4 class="title text-dark">
             Name: <?php echo $petItem["petName"]; ?>
           </h4>
@@ -66,9 +66,61 @@
           </div>
 
           <hr />
-          <a href="adoptApplication.php?petid=<?php $_SESSION['petid'] = $petItem['petID'];?>" class="btn btn-info">Adopt</a>
+          <?php if($_SESSION['id'] != $petItem['userID']){  ?>
+            <a href="adoptApplication.php?petid=<?php $_SESSION['petid'] = $petItem['petID'];?>" class="btn btn-info">Adopt</a>
+            </main>
+            </div>
+          <?php 
+        }
+        else { ?>
+        </main>
         </div>
-      </main>
+        <div class="container-xxl py-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td><b>Adopter Name</b></td>
+                    <td><b>Reason to Adopt</b></td>
+                    <td><b>Adopter Phone</b></td>
+                    <td><b>Adopter Email</b></td>
+
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <?php
+                    $i = 1;
+                    require_once "database.php";
+                    //$userId = $_SESSION['id'];
+                    if (empty($petid)){
+                        sleep(1);
+                        header("Location:".$_SERVER['HTTP_REFERER']);
+                    }
+                    else{
+                        $rows = mysqli_query($conn, "SELECT * FROM petadopting WHERE petsID = '$petid' ORDER BY applyID DESC");
+                        if(!empty($rows)){
+                        foreach($rows as $row) :
+                ?>
+                <tr>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $row["applyName"]; ?></td>
+                    <td><?php echo $row["applyReason"]; ?></td>
+                    <td><?php echo $row["applyEmail"]; ?></td>
+                    <td><?php echo $row["applyPhone"]; ?></td>
+                    <td>
+                        <a href="adoptDetails.php?applyID=<?php echo $row['applyID'];?>" class="btn btn-info">View More</a>
+                        <a href="accept.php?applyID=<?php echo $row["applyID"]; ?>" class="btn btn-warning">Accept</a>
+                        <a href="reject.php?applyID=<?php echo $row["applyID"]; ?>" class="btn btn-danger">Reject</a>
+                    </td>
+                </tr>
+                <?php endforeach; }}?>
+            </tbody>
+          </table>
+        </div>
+          
+          <?php }?>
+      
     </div>
   </div>
     

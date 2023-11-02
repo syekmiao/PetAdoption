@@ -10,7 +10,7 @@
 <body>
     <div class = "container">
         <?php
-            require "registerControl.php";
+            require "controller/registerControl.php";
         ?>
         <h1>Register</h1><br/>
         <form action="register.php" method="post">

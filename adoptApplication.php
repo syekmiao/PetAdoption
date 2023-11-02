@@ -3,7 +3,7 @@
     <div class="container">
         <h1>Application</h1><br/>
         <?php
-            require "applicationControl.php";
+            require "controller/applicationControl.php";
         ?>
         <form action="adoptApplication.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label class="form-lable">Address: </label>
-                <input type="text" placeholder="Enter your current address: " name="address" class="form-control">
+                <input type="text" placeholder="Enter your current living address: " name="address" class="form-control">
             </div>
             <div class="form-group">
                 <label class="form-lable">Do you own any pets?: </label>

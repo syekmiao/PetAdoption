@@ -1,11 +1,12 @@
 <?php require "header.php";
-    require "editControl.php";
+    
 ?>
 
 <body>
-    <div class="container">
+    <div class="container-xxl py-5">
         <h1>Edit pet information</h1><br/>
         <?php 
+        require "controller/editControl.php";
             if (isset($_GET["petid"])){
                 $petid = $_GET["petid"];
                 include "database.php";
@@ -86,7 +87,7 @@
             <div class="form-btn">
                 <input type="submit" value="Edit" name="edit" class="btn btn-primary">
             </div>
-            <a href="users.php"><button type="button" class="btn btn-secondary" style="margin-top: 5px;">Back to user page</button></a><br/>
+            <a href="user.php"><button type="button" class="btn btn-secondary" style="margin-top: 5px;">Back to user page</button></a><br/>
     </form>
     </div>
     
