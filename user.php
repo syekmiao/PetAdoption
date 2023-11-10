@@ -27,10 +27,6 @@
         <label class="form-lable">Email: </label>
         <input type="text" placeholder="Email" name="useremail" class="form-control" value="<?php echo $row["userEmail"];?>">
     </div>
-    <div class="form-group">
-        <label class="form-lable">True Name: </label>
-        <input type="text" placeholder="True Name" name="truename" class="form-control" value="<?php echo $row["truename"];?>">
-    </div>
     <div class="form-btn">
         <input type="submit" value="Edit" name="editUser" class="btn btn-primary">
     </div>

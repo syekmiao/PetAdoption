@@ -2,7 +2,7 @@
 ?>
 <main class="col-lg-10">
     <div class="ps">
-        <br/><br/><h1>All Pets Listing</h1>
+        <br/><br/><h1>All Pet Care Info Listing</h1>
     </div>
 </main>
 </div>
@@ -11,14 +11,10 @@
         <thead>
             <tr>
                 <td>#</td>
-                <td><b>Pet ID</b></td>
-                <td><b>Pet Picture</b></td>
-                <td><b>Pet Name</b></td>
+                <td><b>Info ID </b></td>
+                <td><b>Info Title</b></td>
                 <td><b>Pet Type</b></td>
-                <td><b>Pet Age</b></td>
-                <td><b>Pet Breed</b></td>
                 <td><b>Created Date</b></td>
-                <td><b>Pet Status</b></td>
                 <td></td>
             </tr>
         </thead>
@@ -32,19 +28,18 @@
                 }
                 else{
                     //$userId = $_SESSION['id'];
-                    $rows = mysqli_query($conn, "SELECT * FROM pets ORDER BY petID ASC");
+                    $rows = mysqli_query($conn, "SELECT * FROM information ORDER BY infoID ASC");
                     foreach($rows as $row) :
             ?>
             <tr>
-                <td><?php echo $i++; ?></td>
-                <td><?php echo $row["petID"]; ?></td>
-                <td><img src="../img/<?php echo $row["petPicture"]; ?>" width="200" height="200" title="<?php echo $row["petPicture"]; ?>"></td>
-                <td><?php echo $row["petName"]; ?></td>
-                <td><?php echo $row["petType"]; ?></td>
-                <td><?php echo $row["petAge"]; ?></td>
-                <td><?php echo $row["petBreed"]; ?></td>
-                <td><?php echo $row["petCreateDate"]; ?></td>
-                <td><?php echo $row["petStatus"]; ?></td>
+                <td><?php echo $row["infoID"]; ?></td>
+                <td><?php echo $row["infoTitle"]; ?></td>
+                <td><?php echo $row["infoType"]; ?></td>
+                <td><?php echo $row["infoDate"]; ?></td>
+                <td>
+                    <a href="editInfo.php?infoID=<?php echo $row["infoID"]; ?>" class="btn btn-warning">Edit</a>
+                    <a href="deleteinfo.php?infoID=<?php echo $row["infoID"]; ?>" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
             <?php endforeach; }?>
         </tbody>

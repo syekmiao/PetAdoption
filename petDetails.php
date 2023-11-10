@@ -66,7 +66,8 @@
           </div>
 
           <hr />
-          <?php if($_SESSION['id'] != $petItem['userID']){  ?>
+          <?php if(!empty($_SESSION['id'])){
+            if($_SESSION['id'] != $petItem['userID']){  ?>
             <a href="adoptApplication.php?petid=<?php $_SESSION['petid'] = $petItem['petID'];?>" class="btn btn-info">Adopt</a>
             </main>
             </div>
@@ -119,7 +120,7 @@
           </table>
         </div>
           
-          <?php }?>
+          <?php }}?>
       
     </div>
   </div>

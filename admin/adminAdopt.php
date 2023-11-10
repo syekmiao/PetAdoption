@@ -29,7 +29,7 @@
                 require_once "../database.php";
                 if(empty($_SESSION['id'])){
                     echo "<div class='alert alert-danger'>Login expired, please login again. Refresh in 1 sec...</div>";
-                    header("refresh:1, url=login.php");
+                    echo '<meta http-equiv="Refresh" content="2; url=../login.php">';
                 }
                 else{
                     //$userId = $_SESSION['id'];

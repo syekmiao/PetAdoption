@@ -35,6 +35,15 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../search.php">Search</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Pet Care Info</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="../petcare.php">All</a></li>
+              <li><a class="dropdown-item" href="../petcare.php?care=1">Dog</a></li>
+              <li><a class="dropdown-item" href="../petcare.php?care=1">Cat</a></li>
+              <li><a class="dropdown-item" href="../petcare.php?care=1">Others</a></li>
+            </ul>
+        </li>
         <?php
             if(empty($_SESSION['username'])){}
             else {
@@ -53,7 +62,7 @@
                     <span class='navbar-text'><a class='nav-link' href='../user.php' style='margin-left: 20px'>User</a> 
                 <?php 
                 }else{ ?>
-                    <a class='nav-link' href='../user.php'><img src='logos/user_icon.png' width='50' height='50' ></a>
+                    <meta http-equiv="Refresh" content="1; url=../index.php">
                 <?php }
             }
         ?>
@@ -90,6 +99,12 @@
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple" href="adminAdopt.php">
                   <i class="fas fa-chart-area fa-fw me-3"></i><span>All Adopt Request</span>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="addInform.php">
+                  <i class="fas fa-chart-area fa-fw me-3"></i><span>Add Pet Care Info</span>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple" href="adminInfo.php">
+                  <i class="fas fa-chart-area fa-fw me-3"></i><span>All Pet Care Info</span>
             </a>
         </div>
         </nav>

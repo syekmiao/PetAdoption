@@ -9,8 +9,19 @@ if(isset($_POST["editUser"])){
     if(empty($username) OR empty($useremail) OR empty($truename)){
         echo "<div class='alert alert-danger'>All fields are required</div>";
     }
+    if(empty($userId)){
+        header("url=login.php");
+    }
+    
+    require_once "database.php";
+    $sql1 = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql1);
+    $rowCount = mysqli_num_rows($result);
+    if($rowCount>0){
+        echo "<div class='alert alert-danger'>Username already exists! Please use another username</div>";
+    }
+
     else{
-        require_once "database.php";
         $sql1 = "UPDATE users SET username = '$username', userEmail = '$useremail', truename = '$truename' WHERE userID = '$userId' ";
                 
         if (mysqli_query($conn, $sql1)){

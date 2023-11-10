@@ -12,7 +12,6 @@
     else {
         if(isset($_POST["apply"])){
             $fullname = $_POST["fullname"];
-            $contEmail = $_POST["contactEmail"];
             $contPhone = $_POST["contactPhone"];
             $address = $_POST["address"];
             $ownPets = $_POST["ownPets"];
@@ -22,15 +21,11 @@
 
             $errors = array();
 
-            if (empty($fullname) OR empty($contEmail) OR empty($contPhone) OR empty($address) OR empty($ownPets) OR
+            if (empty($fullname) OR empty($contPhone) OR empty($address) OR empty($ownPets) OR
                 empty($house) OR empty($othersAgree) OR empty($reason) ){
                     array_push($errors, "All fields are required");
                     //echo '<script>alert("All fields are required");</script>';
                 }
-            if(!filter_var($contEmail, FILTER_VALIDATE_EMAIL)){
-                array_push($errors, "Email is not valid");
-                //echo '<script>alert("Email is not valid");</script>';
-            }
             if(!filter_var($contPhone, FILTER_SANITIZE_NUMBER_INT)){
                 array_push($errors, "Phone number is not valid");
                 //echo '<script>alert("Phone number is not valid");</script>';
@@ -44,6 +39,12 @@
 
             else{
                 require_once "database.php";
+
+                $sql1 = "SELECT * FROM users WHERE userID = '$userId'";
+                $result = mysqli_query($conn, $sql1);
+                $row = mysqli_fetch_array($result);
+                $userEmail = $row['userEmail'];
+
                 $sql = "INSERT INTO petAdopting
                         (applyName, applyEmail, applyPhone, applyAddress, ownPets, house, otherAgrees, applyReason, userID, petsID)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -51,7 +52,7 @@
                     $preparestmt = mysqli_stmt_prepare($stmt, $sql);
                     if ($preparestmt){
                         mysqli_stmt_bind_param($stmt, "ssssssssii", 
-                            $fullname, $contEmail, $contPhone, $address, $ownPets, $house, $othersAgree, $reason, $userId, $petId);
+                            $fullname, $userEmail, $contPhone, $address, $ownPets, $house, $othersAgree, $reason, $userId, $petId);
                         mysqli_stmt_execute($stmt);
                         echo "<div class='alert alert-success'>Apply Succesfully</div>";
                         unset($_SESSION['petid']);

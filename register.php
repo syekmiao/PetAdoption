@@ -21,9 +21,6 @@
                 <input type="text" class="form-control" name="email" placeholder="Email:">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="truename" placeholder="Name:">
-            </div>
-            <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password:">
                 <span id="passwordHelpInline" class="form-text">
                     Must be more than 8 characters long.

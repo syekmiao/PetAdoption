@@ -22,10 +22,6 @@
                 <input type="text" placeholder="Enter your name: " name="fullname" class="form-control" value="<?php echo $row['applyName'];?>">
             </div>
             <div class="form-group">
-                <label class="form-lable">Email: </label>
-                <input type="text" placeholder="Enter your contact email: " name="contactEmail" class="form-control" value="<?php echo $row['applyEmail'];?>">
-            </div>
-            <div class="form-group">
                 <label class="form-lable">Contact: </label>
                 <input type="text" placeholder="Enter your phone number: " name="contactPhone" class="form-control" value="<?php echo $row['applyPhone'];?>">
             </div>

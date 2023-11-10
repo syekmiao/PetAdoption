@@ -35,6 +35,15 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="search.php">Search</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-bs-toggle="dropdown" aria-expanded="false">Pet Care Info</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="petcare.php">All</a></li>
+              <li><a class="dropdown-item" href="petcare.php?care=1">Dog</a></li>
+              <li><a class="dropdown-item" href="petcare.php?care=2">Cat</a></li>
+              <li><a class="dropdown-item" href="petcare.php?care=3">Others</a></li>
+            </ul>
+        </li>
         <?php
             if(empty($_SESSION['username'])){}
             else {
